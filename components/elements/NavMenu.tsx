@@ -113,6 +113,7 @@ export function NavMenu() {
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
+
         <NavigationMenuItem>
           <NavigationMenuTrigger>Gender</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -158,6 +159,7 @@ export function NavMenu() {
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
+
         <NavigationMenuItem>
           <Link href="/collections" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>

@@ -1,14 +1,17 @@
-import { motion } from "framer-motion";
+"use client";
 
-type ButtonProps = {
+import { motion } from "framer-motion";
+import React from "react";
+
+interface ButtonProps {
   title: string;
   bgColor: string;
   textColor: string;
   fontSize: string;
   classname: string;
-};
+}
 
-const Button = (props: ButtonProps) => {
+const Button: React.FC<ButtonProps> = (props) => {
   return (
     <motion.button
       whileHover={{ backgroundColor: "#41cde2", color: "#fff" }}
