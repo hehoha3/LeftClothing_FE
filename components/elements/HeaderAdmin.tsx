@@ -39,13 +39,14 @@ const Header = () => {
               </Link>
             </NavigationMenuItem>
 
-            <NavigationMenuItem>
+            {/* //! COLLECTION */}
+            {/* <NavigationMenuItem>
               <Link href="/ad-collection" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Collection
                 </NavigationMenuLink>
               </Link>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
 
             <NavigationMenuItem>
               <Link href="/ad-product" legacyBehavior passHref>
@@ -55,13 +56,14 @@ const Header = () => {
               </Link>
             </NavigationMenuItem>
 
-            <NavigationMenuItem>
+            {/* //! USER */}
+            {/* <NavigationMenuItem>
               <Link href="/ad-user" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   User
                 </NavigationMenuLink>
               </Link>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
           </NavigationMenuList>
         </NavigationMenu>
       </div>

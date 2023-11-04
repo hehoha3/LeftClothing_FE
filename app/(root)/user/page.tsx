@@ -1,10 +1,10 @@
 import React from "react";
-import OrderContent from "./OrderContent";
+import UserDetail from "./UserDetail";
 
 const page = () => {
   return (
-    <div className="pt-5">
-      <OrderContent />
+    <div className="py-5">
+      <UserDetail />
     </div>
   );
 };

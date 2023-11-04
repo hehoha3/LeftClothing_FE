@@ -2,7 +2,7 @@ import axios from "axios";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-interface Data {
+export interface Data {
   id: number;
   productName: string;
   productDescription: string;

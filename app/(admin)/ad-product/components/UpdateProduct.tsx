@@ -86,7 +86,10 @@ const UpdateProduct: React.FC<ProductId> = ({ productId }) => {
       productSizes: detailProduct.productSizes,
       productCategory: detailProduct.productCategory.id,
       productType: detailProduct.productType.id,
-      productCollection: detailProduct.productCollection.id,
+      // productCollection: detailProduct.productCollection.id || 0,
+      productCollection: detailProduct.productCollection
+        ? detailProduct.productCollection.id
+        : 0,
       productGender: detailProduct.productGender,
     });
   }, [detailProduct]);
@@ -135,7 +138,21 @@ const UpdateProduct: React.FC<ProductId> = ({ productId }) => {
   };
 
   // ! PRODUCT SIZES
-  const sizeOptions = ["S", "M", "L", "XL", "XXL"];
+  let sizeOptions: string[];
+
+  switch (product.productCategory) {
+    case 12:
+      sizeOptions = ["S", "M", "L", "XL", "XXL"];
+      break;
+    case 13:
+      sizeOptions = ["29", "30", "31", "32", "34"];
+      break;
+    case 31:
+      sizeOptions = ["39", "40", "41", "42", "43"];
+      break;
+    default:
+      sizeOptions = [];
+  }
 
   const handleSizeChange = (selectedSize: string) => {
     const updatedSizes = product.productSizes.includes(selectedSize)
@@ -149,7 +166,7 @@ const UpdateProduct: React.FC<ProductId> = ({ productId }) => {
   };
 
   // ! PRODUCT GENDER
-  const genderOptions = ["Male", "Female", "Child"];
+  const genderOptions = ["Male", "Female"];
 
   const handleGenderChange = (selectedGender: string) => {
     const updatedGender = product.productGender.includes(selectedGender)
@@ -347,7 +364,12 @@ const UpdateProduct: React.FC<ProductId> = ({ productId }) => {
               <SelectTrigger className="w-96">
                 <SelectValue
                   defaultValue={product.productCollection}
-                  placeholder={detailProduct.productCollection.name}
+                  // placeholder={detailProduct.productCollection.name}
+                  placeholder={
+                    detailProduct.productCollection
+                      ? detailProduct.productCollection.name
+                      : "Không có"
+                  }
                 />
               </SelectTrigger>
               <SelectContent>

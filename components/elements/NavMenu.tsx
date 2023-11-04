@@ -16,65 +16,65 @@ import {
 const products = [
   {
     title: "Top Wear",
-    href: "/topware",
+    href: "/products?category=Top Wear",
     children: [
       {
         title: "Jacket",
-        href: "/jackets",
+        href: "/products?type=Jacket",
       },
       {
         title: "T-shirt",
-        href: "/shirts",
+        href: "/products?type=T-shirt",
       },
       {
         title: "Sweatshirts",
-        href: "/hoodies",
+        href: "/products?type=Sweatshirts",
       },
     ],
   },
   {
     title: "Bottom Wear",
-    href: "/bottomware",
+    href: "/products?category=Bottom Wear",
     children: [
       {
         title: "Jean",
-        href: "/jeans",
+        href: "/products?type=Jean",
       },
       {
         title: "Trouser",
-        href: "/trousers",
+        href: "/products?type=Trouser",
       },
       {
         title: "Short",
-        href: "/shorts",
+        href: "/products?type=Short",
       },
     ],
   },
   {
     title: "Foot Wear",
-    href: "/footware",
+    href: "/products?category=Foot Wear",
     children: [
       {
         title: "Sneaker",
-        href: "/sneakers",
+        href: "/products?type=Sneaker",
       },
       {
         title: "Boots & High heel",
-        href: "/bootsnheels",
+        href: "/products?type=Boots",
       },
     ],
   },
   {
     title: "Accessories",
-    href: "/accessories",
+    href: "/products?category=Accessories",
     children: [
       {
         title: "Jewelry",
-        href: "/jewelry",
+        href: "/products?type=Jewelry",
       },
       {
         title: "Pockets",
-        href: "/pockets",
+        href: "/products?type=Pockets",
       },
     ],
   },
@@ -114,7 +114,8 @@ export function NavMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        <NavigationMenuItem>
+        {/* //! GENDER */}
+        {/* <NavigationMenuItem>
           <NavigationMenuTrigger>Gender</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="flex w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-fit ">
@@ -158,15 +159,16 @@ export function NavMenu() {
               </div>
             </div>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
 
-        <NavigationMenuItem>
+        {/* //! COLLECTION */}
+        {/* <NavigationMenuItem>
           <Link href="/collections" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Collections
             </NavigationMenuLink>
           </Link>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
 
         <NavigationMenuItem>
           <Link href="/about-us" legacyBehavior passHref>

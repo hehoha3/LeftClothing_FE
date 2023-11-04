@@ -1,12 +1,16 @@
+import { Data } from "@/hooks/useStoreProduct";
 import Image from "next/image";
-import img from "../../public/testCardProduct.webp";
 import Link from "next/link";
 
-const ProductCard = () => {
+interface ProductCardProps {
+  product: Data;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <Link href={"/"}>
+    <Link href={`/products/${product.id}`} className="">
       <div className="group relative h-fit max-w-[269px] text-center overflow-hidden rounded-xl">
-        <div className="absolute overflow-hidden flex flex-col justify-end w-full h-full rounded-xl bg-black/10 bottom-[55px] opacity-0 group-hover:opacity-100 duration-500">
+        <div className="absolute overflow-hidden flex flex-col justify-end w-full h-[403.5px] rounded-xl bg-black/10 opacity-0 group-hover:opacity-100 duration-500 mb-9">
           <p className="relative bg-light-blue text-white px-5 py-2">
             More{" "}
             <span className="absolute mt-0.5 ml-1">
@@ -24,12 +28,18 @@ const ProductCard = () => {
             </span>
           </p>
         </div>
-        <Image src={img} alt="img" className="mb-2 rounded-xl" />
-        <p className="text-[15px] text-black font-semibold group-hover:text-light-blue duration-300 mb-1">
-          Long sleeve T-shirt
+        <Image
+          src={product.productImages[0]}
+          alt="img"
+          className="mb-2 rounded-xl"
+          width={269}
+          height={483}
+        />
+        <p className="text-[15px] text-black font-semibold  duration-300 mb-1">
+          {product.productName}
         </p>
-        <p className="text-[15px] text-black group-hover:text-red-600 duration-300">
-          430,769₫
+        <p className="text-[15px] text-black group-hover:text-red-600 group-hover:font-bold duration-300">
+          {product.productPrice.toLocaleString("vn-VN")} ₫
         </p>
       </div>
     </Link>

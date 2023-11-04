@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/sheet";
 import { useStoreProduct } from "@/hooks/useStoreProduct";
 import { useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const TableProducts = () => {
   const { data, getAllData, deleteData } = useStoreProduct((state) => ({
@@ -30,10 +32,10 @@ const TableProducts = () => {
         <table className="min-w-full">
           <thead className="bg-gray-50">
             <tr>
-              <th className="text-left font-medium tracking-wide py-3 px-6">
+              <th className="text-left font-medium tracking-wide py-3 px-6 max-w-[250px]">
                 Name
               </th>
-              <th className="text-left font-medium uppercase tracking-wide py-3 px-6">
+              <th className="text-left font-medium uppercase tracking-wide py-3 px-6 max-w-[250px]">
                 Description
               </th>
               <th className="text-center font-medium uppercase tracking-wide py-3 px-6">
@@ -65,20 +67,34 @@ const TableProducts = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white">
+          <tbody className="bg-white ">
             {data.map((item, index) => (
-              <tr key={index}>
-                <td className="text-left py-4 px-6 whitespace-nowrap">
+              <tr
+                key={index}
+                className="border-black/80 border-b-[1px] max-w-[100px]"
+              >
+                <td className="text-left py-4 px-6 min-w-[350px]">
                   {item.productName}
                 </td>
-                <td className="text-left py-4 px-6 whitespace-nowrap">
-                  {item.productDescription}
+                <td className="text-left py-4 px-6 min-w-[350px]">
+                  <p>{item.productDescription}</p>
                 </td>
                 <td className="text-center py-4 px-6 whitespace-nowrap">
                   {item.productImages.map((img, i) => (
-                    <div key={i} className="flex flex-col">
-                      {img}
-                    </div>
+                    <Link
+                      href={img}
+                      target="_blank"
+                      key={i}
+                      className="flex flex-col"
+                    >
+                      <Image
+                        src={img}
+                        alt={`img ${i}`}
+                        width={100}
+                        height={100}
+                      />
+                      {/* {img} */}
+                    </Link>
                   ))}
                 </td>
                 <td className="text-center py-4 px-6 whitespace-nowrap">
@@ -101,7 +117,9 @@ const TableProducts = () => {
                   {item.productType.name}
                 </td>
                 <td className="text-center py-4 px-6 whitespace-nowrap">
-                  {item.productCollection.name}
+                  {item.productCollection
+                    ? item.productCollection.name
+                    : "Không có"}
                 </td>
                 <td className="text-center py-4 px-6 whitespace-nowrap">
                   {item.productGender.map((gend, i) => (

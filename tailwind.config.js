@@ -35,6 +35,7 @@ module.exports = {
         description: "#868686",
         "smoot-pink": "#faf7f4",
         footer: "#f5f5f5",
+        "header-detail-product": "#787878",
       },
       fontFamily: {
         "Regular-Italic": ["Crimson Text", "serif", "Lato", "sans-serif"],

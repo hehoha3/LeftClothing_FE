@@ -1,16 +1,41 @@
 "use client";
 
-import Link from "next/link";
 import { SetStateAction, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const NavInfo = () => {
+  const router = useRouter();
   const [searchBar, setSearchBar] = useState(false);
 
   const [searchInput, setSearchInput] = useState("");
 
   const handleChange = (e: { target: { value: SetStateAction<string> } }) => {
     setSearchInput(e.target.value);
+  };
+
+  const handleSearchBtn = () => {
+    if (searchInput) {
+      // console.log(searchInput);
+      router.push(`/search?query=${searchInput}`);
+    }
+  };
+
+  const handleUserBtn = () => {
+    if (localStorage.getItem("token")) {
+      router.push("/user");
+    } else {
+      router.push("/login");
+    }
+  };
+
+  const handleCartBtn = () => {
+    if (localStorage.getItem("token")) {
+      router.push("/cart");
+    } else {
+      alert("Bạn cần Đăng nhập khi sử dụng chức năng này");
+      router.push("/login");
+    }
   };
 
   return (
@@ -26,6 +51,7 @@ const NavInfo = () => {
               transition={{ delay: 0.15 }}
             >
               <button
+                onClick={() => handleSearchBtn()}
                 className={`hover:fill-white ${
                   searchInput ? "fill-white" : "fill-[#abb2bf]"
                 } `}
@@ -67,6 +93,7 @@ const NavInfo = () => {
           )}
         </AnimatePresence>
 
+        {/* //! SHEARCH */}
         <button
           className="hover:fill-light-blue duration-300"
           onClick={() => setSearchBar((prev) => !prev)}
@@ -81,8 +108,9 @@ const NavInfo = () => {
           </svg>
         </button>
 
-        <Link
-          href={"/login"}
+        {/* //! USER DETAIL */}
+        <button
+          onClick={() => handleUserBtn()}
           className="stroke-black hover:stroke-light-blue duration-300 ml-3"
         >
           <svg
@@ -101,9 +129,13 @@ const NavInfo = () => {
               <path d="M20 21a8 8 0 1 0-16 0m16 0a8 8 0 1 0-16 0" />
             </g>
           </svg>
-        </Link>
+        </button>
 
-        <button className="hover:fill-light-blue duration-300 mx-3">
+        {/* //! CART */}
+        <button
+          onClick={() => handleCartBtn()}
+          className="hover:fill-light-blue duration-300 mx-3"
+        >
           <svg
             width="25"
             height="25"

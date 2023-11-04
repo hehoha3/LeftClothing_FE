@@ -111,7 +111,22 @@ const AddProductForm = () => {
   };
 
   // ! PRODUCT SIZES
-  const sizeOptions = ["S", "M", "L", "XL", "XXL"];
+  let sizeOptions: string[];
+
+  switch (product.productCategory) {
+    case 12:
+      sizeOptions = ["S", "M", "L", "XL", "XXL"];
+      break;
+    case 13:
+      sizeOptions = ["29", "30", "31", "32", "34"];
+      break;
+    case 31:
+      sizeOptions = ["39", "40", "41", "42", "43"];
+      break;
+    default:
+      sizeOptions = [];
+  }
+  // const sizeOptions = ["S", "M", "L", "XL", "XXL"];
 
   const handleSizeChange = (selectedSize: string) => {
     const updatedSizes = product.productSizes.includes(selectedSize)
@@ -125,7 +140,7 @@ const AddProductForm = () => {
   };
 
   // ! PRODUCT GENDER
-  const genderOptions = ["Male", "Female", "Child"];
+  const genderOptions = ["Male", "Female"];
 
   const handleGenderChange = (selectedGender: string) => {
     const updatedGender = product.productGender.includes(selectedGender)
